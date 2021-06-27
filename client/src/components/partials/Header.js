@@ -44,7 +44,7 @@ export default function Header(props) {
            setState(false)
         }
 
-        const req = axios.get('http://localhost:5000/api/user/cartItems', {
+        const req = axios.get('/api/user/cartItems', {
             headers: header
         })
         .then((res) => {

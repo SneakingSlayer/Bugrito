@@ -24,7 +24,7 @@ export default function Login() {
         }
         
 
-            axios.post('http://localhost:5000/api/user/login', userInfo)
+            axios.post('/api/user/login', userInfo)
             .then((res) => {
                 localStorage.setItem('_id', res.data.id)
                 localStorage.setItem('jwt', res.data.token)

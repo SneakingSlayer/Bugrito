@@ -22,7 +22,7 @@ export default function Register() {
         };
 
         console.log(userInfo);
-        await axios.post('http://localhost:5000/api/user/register', userInfo)
+        await axios.post('/api/user/register', userInfo)
         .then((res) => {
             history.push('/Login')
         })
