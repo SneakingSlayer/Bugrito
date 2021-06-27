@@ -1,0 +1,280 @@
+@font-face {
+    font-family: 'Barlow-Black';
+    src: url('../../assets/fonts/Barlow-Black.ttf');
+}
+@font-face {
+    font-family: 'Barlow-Regular';
+    src: url('../../assets/fonts/Barlow-Regular.ttf');
+}
+@font-face {
+    font-family: 'Barlow-SemiBold';
+    src: url('../../assets/fonts/Barlow-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'Barlow-Bold';
+    src: url('../../assets/fonts/Barlow-Bold.ttf');
+}
+
+
+body{
+    margin:0;
+    padding:0;
+    
+
+}
+.header-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 3px 17px -10px rgba(0,0,0,0.3);
+    margin-bottom: 2rem;
+    background-color: #fff;
+}
+
+.header-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1440px;
+    max-width: 1440px;
+}
+
+.nav-list{
+    display:flex;
+    align-items: center;
+    list-style: none;
+}
+
+.foot-list{
+    display:flex;
+
+}
+
+.nav-list-drop{
+    display:flex;
+    flex-direction: column;
+    padding: 0 !important;
+    list-style: none;
+}
+
+.footer{
+    bottom:0;
+}
+
+
+
+.foot-list{
+    font-family: 'Barlow-SemiBold';
+    font-size: 21px;
+    display:flex;
+    justify-content: space-between;
+    width: 70%;
+    list-style: none;
+}
+
+
+.foot-item{
+    font-family: 'Barlow-Regular';
+    font-size: 16px;
+    padding: .5rem;
+    padding-left: 0;
+    text-decoration: none;
+}
+
+.foot-list-foot{
+    list-style: none;
+    padding-left: 0 !important;
+    margin-top: 1rem;
+}
+
+
+
+.list-item{
+    display: flex;
+    align-items: center;
+    font-family: 'Barlow-Regular';
+    font-size: 24px;
+    padding: .5rem;
+    text-decoration: none;
+}
+
+.list-item a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.list-item-drop{
+    display: flex;
+    align-items: center;
+    font-family: 'Barlow-Regular';
+    font-size: 24px;
+    padding: .5rem;
+    text-decoration: none;
+    padding: 12px 16px;
+}
+
+.list-item-drop:hover{
+    cursor: pointer;
+    background-color: #f7f7f7;
+  
+}
+
+.list-item-drop a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    
+}
+
+
+.navbrand{
+    font-family: "Barlow-Black";
+    font-size: 36px;
+    letter-spacing: 1px;
+    
+}
+
+.navbrand a{
+    text-decoration: none;
+    color: #000;
+}
+
+.toggle{
+    display: none;
+}
+
+.btn-menu{
+    font-size: 24px;
+    padding: 0;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+
+.options{
+    font-size: 18px;
+    
+}
+
+.options a{
+    display: flex;
+    align-items: center;
+}
+
+.socbrand{
+    font-size: 21px;
+    display:flex;
+    width: 90%;
+    justify-content: space-between;
+
+}
+
+.item-st{
+    font-family: 'Barlow-SemiBold';    
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    
+}
+
+.dropdown{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    
+    box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.1);
+   /* padding: 12px 16px;*/
+    z-index: 1;
+    border-radius: 5px;
+    top: 7%;
+    right: -15;
+}
+
+.prof-sec:hover{
+    cursor: pointer;
+}
+
+#prof-drop{
+    display:none
+}
+
+
+
+
+
+  #prof-drop:checked ~ .dropdown{
+      display: flex;
+
+  }
+
+
+  .badge{
+    font-family: 'Barlow-Regular';
+   
+    font-size: 12px;
+    position: absolute;
+    top: 20px;
+    margin-left: 15px;
+    width: 16px;
+    height: 16px;
+    background: red;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+
+  .sign-in-a{
+    text-decoration: none;  
+  }
+
+
+  .btn-sign{
+      font-family: 'Barlow-SemiBold';
+      font-size: 16px;
+      color: white;
+      background-color: black;
+      border-radius: 50px;
+      padding: 5px;
+      padding-left: 15px;
+      padding-right: 15px;
+      
+      display: flex;
+      align-items: center;
+      border:2px solid black;
+      outline: none;
+
+  }
+  .btn-sign:hover{
+
+      cursor: pointer;
+      color: black;
+      background-color: transparent;
+     
+
+  }
+
+@media (max-width: 1000px) {
+    .toggle{
+        display: block;
+    }
+    .collapse{
+        display:none
+    }
+    .toggle-header{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 2px 3px 17px -10px rgba(0,0,0,0.3);
+        margin-bottom: 2rem;
+        height: 100vh;
+    }
+ }
