@@ -20,7 +20,7 @@ export default function Hero() {
                     
                 </div>
                 <div className="col align-items-center">
-                    <img  src={BannerImg} alt="bugrito" height="600" ></img>
+                    <img  className="hero-img" src={BannerImg} alt="bugrito"  ></img>
                 </div>
 
             </div>

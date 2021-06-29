@@ -9,6 +9,20 @@ export default function Cart() {
     const [items, setItems]  = useState([])
     const [count, setCount] = useState()
     const history = useHistory()
+
+    function loading(){
+        return(
+            <div className="container justify-center align-items-center">
+                <div className="loadingio-spinner-rolling-m0kkotwichc">
+                    <div class="ldio-fjjt8eyoem">
+                        <div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
    
     function removeItemCart(id){
         const updatedCart = items.filter((item) => item._id !== id)
@@ -17,12 +31,14 @@ export default function Cart() {
        
     }
 
-    
+    console.log(items)
 
     const grandTotal = items.reduce((total, currentVal) =>
        
-        total = total + parseInt(currentVal.itemTprice), 0
+        total = total + (parseInt(currentVal.itemTprice) * parseInt(currentVal.itemQty)), 0
     )
+
+    
 
     
     
@@ -60,7 +76,7 @@ export default function Cart() {
 
 
         console.log(itemInfo)
-        axios.post('/api/user/removeItem', itemInfo, {
+        axios.post('http://localhost:5000/api/user/removeItem', itemInfo, {
             headers: header
         })
         .then((res) => {
@@ -74,12 +90,13 @@ export default function Cart() {
    
     useEffect(() => {
         
-        const req = axios.get('/api/user/cartItems', {
+        const req = axios.get('http://localhost:5000/api/user/cartItems', {
             headers: header
         })
         .then((res) => {
          const cartItems = res.data
          setItems(cartItems)
+         
         })
         .catch((err) => {
            // history.push('/Login')

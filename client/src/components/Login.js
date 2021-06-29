@@ -9,6 +9,7 @@ export default function Login() {
     const [yourPass, setPass] = useState('');
     const history = useHistory();
     const [err, setErr] = useState(false)
+    const user = localStorage.getItem('fName')
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
         if(jwt){
@@ -24,10 +25,11 @@ export default function Login() {
         }
         
 
-            axios.post('/api/user/login', userInfo)
+            axios.post('http://localhost:5000/api/user/login', userInfo)
             .then((res) => {
                 localStorage.setItem('_id', res.data.id)
                 localStorage.setItem('jwt', res.data.token)
+                localStorage.setItem('user', res.data.fName)
                 console.log(res)
                 history.push('/')
             })

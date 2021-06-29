@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import Button from '../Button'
+import {Navbar, Container} from 'react-bootstrap'
 import './partials.css'
 import { FaShoppingCart, FaUserCircle, FaBars, FaSignOutAlt, FaAngleDown, FaIdBadge} from 'react-icons/fa';
 import {Link, useHistory, Redirect} from 'react-router-dom';
@@ -9,7 +9,7 @@ export default function Header(props) {
     const [state, setState] = useState();
     const [count, setCount] = useState();
     const history = useHistory()
-
+    const user = localStorage.getItem('user')
     const header = { 
         'Content-type': 'application/json',
         'auth-token': jwt
@@ -44,7 +44,7 @@ export default function Header(props) {
            setState(false)
         }
 
-        const req = axios.get('/api/user/cartItems', {
+        const req = axios.get('http://localhost:5000/api/user/cartItems', {
             headers: header
         })
         .then((res) => {
@@ -71,23 +71,13 @@ export default function Header(props) {
 
     async function logOut(){
        await localStorage.clear();
+
        history.push('/')
 
     }
 
 
     return (
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -100,21 +90,13 @@ export default function Header(props) {
                         <a href='/'>Bugrito's</a>
                     </div>  
                     <ul className="nav-list">
-                        <li className="list-item"><a className="item-st">Home</a></li>
-                        <li className="list-item"><a className="item-st">Menu</a></li>
-                        <li className="list-item"><a className="item-st">Contact</a></li>
+                        <li className="list-item"><Link to="/" className="item-st">Home</Link></li>
+                        <li className="list-item"><Link to="/Menu" className="item-st">Menu</Link></li>
                     </ul>
 
                 </div>
                 
-              {/* <div className="nav-options">
-                    <ul className="nav-list">
-                        <li className="list-item">Men</li>
-                        <li className="list-item">Women</li>
-                        <li className="list-item">Kids</li>
-                        <li className="list-item">Sale</li>
-                    </ul>
-                </div>*/} 
+              
                 <div className="nav-actions collapse">
                     <ul className="nav-list">
                         
@@ -123,7 +105,7 @@ export default function Header(props) {
                         state? <li className="list-item">
                         <input type="checkbox" id="prof-drop"/>
                         <label className="prof-sec" for="prof-drop">
-                            <a><FaUserCircle/> &nbsp;<span className="item-st">Account</span> &nbsp;<FaAngleDown size={18}/></a>
+                            <a><FaUserCircle/> &nbsp;<span className="item-st">{user}</span> &nbsp;<FaAngleDown size={18}/></a>
                         </label> 
                         <div className="dropdown">
                             <ul className="nav-list-drop">
@@ -139,8 +121,7 @@ export default function Header(props) {
                         
                         }
                         
-                       
-                        {/*<li className="list-item"><Button label="Register"/></li>*/}
+                     
                         
                     </ul>
                 </div>
@@ -154,12 +135,7 @@ export default function Header(props) {
 
                 </div>
             </nav>
-           {/*
-            <input type="checkbox" id="prof-drop" className="prof-drop" />
-            <label for="prof-drop">
-                <a><FaUserCircle/> &nbsp;<span className="item-st">Account</span> &nbsp;<FaAngleDown size={18}/></a>
-            </label>*/}             
-            
+    
         
 
 

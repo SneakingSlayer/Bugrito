@@ -9,6 +9,9 @@ import Home from './pages/Home';
 import Hero from './components/Hero';
 import Item from './components/Item';
 
+import ItemPage from './pages/ItemPage'
+import MenuPage from './pages/MenuPage'
+
 
 
 function App() {
@@ -19,11 +22,11 @@ function App() {
     <Router>
       <Switch>
         <div>
-     
-      <Route component={CartPage} path="/Cart"/>
+        <Route component={MenuPage} path ="/Menu" />
+        <Route component={CartPage} path="/Cart"/>
         <Route component={RegisterPage} path="/Register"/>
         <Route component={LoginPage} path="/Login"/>
-        <Route component={Item} path="/Item"/>
+        <Route component={ItemPage}  path="/Item/:prodno"/>
         <Route component={Home} path="/" exact={true}/>
         </div>
       </Switch>
