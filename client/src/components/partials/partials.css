@@ -21,6 +21,12 @@ body{
     padding:0;
     
 
+
+
+}
+
+.navbar{
+    box-shadow: 2px 3px 17px -10px rgba(0,0,0,0.3);
 }
 .header-section{
     width: 100%;
@@ -60,8 +66,9 @@ body{
 
 .footer{
     bottom:0;
+    width: 75%;
+    justify-content: space-between;
 }
-
 
 
 .foot-list{
@@ -75,11 +82,11 @@ body{
 
 
 .foot-item{
-    font-family: 'Barlow-Regular';
-    font-size: 16px;
-    padding: .5rem;
-    padding-left: 0;
-    text-decoration: none;
+    font-family: 'Barlow-Regular' !important;
+    font-size: 16px !important ;
+    padding: .5rem !important;
+    padding-left: 0 !important;
+    text-decoration: none !important;
 }
 
 .foot-list-foot{
@@ -175,7 +182,8 @@ body{
 }
 
 .item-st{
-    font-family: 'Barlow-SemiBold';    
+    font-family: 'Barlow-SemiBold';
+    letter-spacing: .5px;    
     font-size: 16px;
     background-color: transparent;
     border: none;
@@ -183,18 +191,28 @@ body{
     
 }
 
-.dropdown{
+.item-ft{
+    font-family: 'Barlow-SemiBold';
+    letter-spacing: .5px;    
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    
+}
+
+/**.dropdown{
     display: none;
     position: absolute;
     background-color: #fff;
     
     box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.1);
-   /* padding: 12px 16px;*/
+    padding: 12px 16px;
     z-index: 1;
     border-radius: 5px;
     top: 7%;
     right: -15;
-}
+}**/
 
 .prof-sec:hover{
     cursor: pointer;
@@ -217,12 +235,12 @@ body{
   .badge{
     font-family: 'Barlow-Regular';
    
-    font-size: 12px;
+    font-size: 10px;
     position: absolute;
-    top: 20px;
-    margin-left: 15px;
-    width: 16px;
-    height: 16px;
+    top: 25px;
+    margin-left: 9px;
+    width: 14px;
+    height: 14px;
     background: red;
     color: #ffffff;
     display: flex;
@@ -235,7 +253,10 @@ body{
     text-decoration: none;  
   }
 
-
+.footer li{
+    font-family: 'Barlow-SemiBold';
+    font-size: 20px;
+}
   .btn-sign{
       font-family: 'Barlow-SemiBold';
       font-size: 16px;
@@ -260,8 +281,91 @@ body{
      
 
   }
+ 
+  .navbar-toggler{
+      height: 50px;
+  }
 
-@media (max-width: 1000px) {
+  .dropdown-toggle:after { 
+      content: none;
+      display: flex;
+    }
+
+    .dropdown-toggle{
+        display: flex;
+        align-items: center;
+        border-radius: 0px !important;
+        padding: 0 !important;
+        background-color: transparent !important;
+        color: rgba(0,0,0,.5);
+        
+    }
+    .dropdown-toggle.show{
+        outline: none !important;
+    }
+    .dropdown-toggle:hover{
+        color: black;
+    }
+    .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+        color:black;
+        outline: none !important;
+    }
+
+    .dropdown-menu.show{
+        right: 0;
+  left: auto;
+
+    }
+
+    .btn:focus,.btn:active {
+        outline: none !important;
+        box-shadow: none !important;
+     }
+
+     .nav-link{
+         display: flex;
+         align-items: center;
+     }
+     
+    
+     .nav-cont{
+         padding: 0rem 0 0rem 0 !important;
+     }
+    .footer-cont{
+        padding: 0rem 0 0rem 0 !important;
+    }
+
+     .no-shadow{
+         box-shadow: none !important;
+     }
+
+     @media screen and (min-width: 1000px) {
+        .cart-icon-outside{
+            display: none;
+        }
+        .drop-user-show{
+            display: none;
+           
+        }
+        .login-show{
+            display: none;
+        }
+       
+     }
+     @media screen and (max-width: 1000px) {
+            
+        .drop-user{
+            display: none;
+        }
+        .drop-user-show{
+            color: rgba(0,0,0,.5);
+        }
+        .navbar-nav .nav-link{
+            padding: 0 !important;
+        }
+        .sign-in-a{
+            display: none;
+        }
     .toggle{
         display: block;
     }
@@ -277,4 +381,38 @@ body{
         margin-bottom: 2rem;
         height: 100vh;
     }
+    
+    .footer-cont{
+        flex-direction: column-reverse;
+    }
+    .footer{
+        width: 100%;
+    }
+    .col-foot{
+        justify-content: flex-start !important;
+    }
+    .cart-icon{
+        display: none;
+    }
+    .cart-icon-outside{
+        display: inline;
+        color: rgba(0,0,0,.5);
+    }
+
+    .badge{
+        top: 22px;
+        margin-left: 10px;
+        
+        
+      }
+ }
+
+ @media screen and (max-width: 768px){
+     .foot-accordion{
+         display: none;
+     }
+     .footer-cont{
+         margin-left: 30px;
+         margin-bottom: 2rem;
+     }
  }

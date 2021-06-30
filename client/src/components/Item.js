@@ -4,6 +4,7 @@ import Footer from './partials/Footer'
 import axios from 'axios';
 import {useParams} from 'react-router-dom'
 import {FaPlus, FaMinus, FaCheckCircle } from 'react-icons/fa';
+import {Container, Row, Col, Table, DropdownButton} from 'react-bootstrap'
 export default function Item(props) {
 
     
@@ -81,8 +82,28 @@ export default function Item(props) {
     return (
         <div>
          <Header cartcount={cartcount}/>
+        <Container>
+            <Row>
+                <Col lg={8}>
+                    <img className="item-img" src={require(`../assets/images/items/${props.thumb}`).default}></img>
+                </Col>
+                <Col className="d-flex align-items-center" lg={4}>
+                    <div>
+                        <h2 className="sec-title">{props.title}</h2>
+                        <p className="description">{props.desc}</p>
+                        <h1 className="sec-title">₱ {dynPrice}</h1>
+                        <button className="description btn-qty" onClick={subQty}><FaMinus/></button>
+                        <input className="description qty-inp text-center" value={count} min="1" />
+                        <button className="description btn-qty" onClick={() => setCount(count+1)}><FaPlus/></button>
+                        <form onSubmit={addToCart}>
+                            <button className="btn add-btn" type="submit">Add to Cart</button>
+                        </form>
+                    </div>
+                </Col>
+            </Row>
 
-            <div className="container justify-center">
+        </Container>
+           {/** <div className="container justify-center">
                 <div className="row align-items-center">
                     <div>
                         <img className="item-img" src={require(`../assets/images/items/${props.thumb}`).default}></img>
@@ -103,7 +124,7 @@ export default function Item(props) {
                     </div>
                 </div>
                 
-            </div>
+            </div>*/}
         </div>
     )
 }

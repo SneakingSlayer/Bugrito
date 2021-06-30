@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Navbar, Container} from 'react-bootstrap'
+import {Navbar, Container, Dropdown, Nav} from 'react-bootstrap'
 import './partials.css'
 import { FaShoppingCart, FaUserCircle, FaBars, FaSignOutAlt, FaAngleDown, FaIdBadge} from 'react-icons/fa';
 import {Link, useHistory, Redirect} from 'react-router-dom';
@@ -78,12 +78,57 @@ export default function Header(props) {
 
 
     return (
+        <Navbar collapseOnSelect expand="lg" >
+        <Container className="nav-cont">
+        <Navbar.Brand className="navbrand"><a href='/'>Bugrito's</a></Navbar.Brand>
+        <div className="d-flex flex-row align-items-center">
+            {
+                state? <Nav.Link href="/Cart" className="cart-icon-outside">{badge(props.cartcount, count)}<FaShoppingCart/> &nbsp;<span className="item-st">Cart</span></Nav.Link> : <Nav.Link href="/Login" className="login-show"><li className="list-item"><button className="btn-sign">Sign In</button></li></Nav.Link>
+            }
+    {/**  <Nav.Link href="/Cart" className="cart-icon-outside">{badge(props.cartcount, count)}<FaShoppingCart/> &nbsp;<span className="item-st">Cart</span></Nav.Link>*/}  
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        </div>
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link className="item-st" href="/">Home</Nav.Link>
+            <Nav.Link className="item-st" href="/Menu">Menu</Nav.Link>
+            
+          </Nav>
+          <Nav className="ml-auto">
+          
+            <Nav.Link href="/Cart" className="cart-icon">{badge(props.cartcount, count)}<FaShoppingCart/> &nbsp;<span className="item-st">Cart</span></Nav.Link>
+            {
+                state? 
+                
+                <Nav.Link className="list-item dus">
+                    <button className="item-st drop-user-show" onClick={logOut}>Sign Out</button>
+                    <Dropdown className="drop-user">
+                        <Dropdown.Toggle id="dropdown-basic">
+                            <FaUserCircle/> &nbsp;<span className="item-st">{user}</span> &nbsp;<FaAngleDown size={18}/>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item><a className="item-st"><FaUserCircle/> &nbsp;&nbsp;My Account</a></Dropdown.Item>
+                            <button className="item-st" onClick={logOut}><Dropdown.Item><FaSignOutAlt/> &nbsp;&nbsp;Sign Out</Dropdown.Item></button>
+                        </Dropdown.Menu>
+
+                    </Dropdown>
+                </Nav.Link>
+                :
+
+                <Nav.Link className="sign-in-a" href="/Login">
+                    <li className="list-item"><button className="btn-sign">Sign In</button></li> 
+                </Nav.Link>
+            }
+          </Nav>
+        </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
 
 
 
-
-        <div className="header-section">
+    /*   <div className="header-section">
             <nav className="header-nav">
                 <div className="d-flex-row align-items-center">
                     <div className="navbrand">
@@ -144,7 +189,7 @@ export default function Header(props) {
 
 
 
-        </div>
+        </div>*/
 
 
 

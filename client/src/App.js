@@ -12,8 +12,6 @@ import Item from './components/Item';
 import ItemPage from './pages/ItemPage'
 import MenuPage from './pages/MenuPage'
 
-
-
 function App() {
   
   return (

@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
-import Header from '../components/partials/Header'
+import Header from './partials/Header'
 import './components.css'
+import {Container, Row, Col, Table, DropdownButton} from 'react-bootstrap'
 import { FaTrash } from 'react-icons/fa';
 export default function Cart() {
     const jwt = localStorage.getItem('jwt')
     const [items, setItems]  = useState([])
     const [count, setCount] = useState()
     const history = useHistory()
+
+    const devFee = 50;
 
     function loading(){
         return(
@@ -33,12 +36,12 @@ export default function Cart() {
 
     console.log(items)
 
-    const grandTotal = items.reduce((total, currentVal) =>
+    const subTotal = items.reduce((total, currentVal) =>
        
         total = total + (parseInt(currentVal.itemTprice) * parseInt(currentVal.itemQty)), 0
     )
 
-    
+    const grandTotal = subTotal + devFee
 
     
     
@@ -46,11 +49,17 @@ export default function Cart() {
         <tr  className="cart-item" keys={item._id}>
             <td className="d-flex-row align-items-center">
                 <img className="cart-img" src={require(`../assets/images/items/${item.thumb}`).default}></img>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.itemName}</span>
+                <div className="d-flex-col cart-item-info">
+                    <span className="item-st">{item.itemName}</span>
+                    {/**@768px*/}
+                    <p className="item-muted ref-stat">Ref: {item.prodno}</p>
+                    <p className="item-muted price-stat">₱ {item.itemPrice}</p>
+                </div>
             </td>
-            <td>₱ {item.itemPrice}</td>
-            <td>{item.itemQty}</td>
-            <td>₱ {parseInt(item.itemPrice) * parseInt(item.itemQty)}</td>
+            {/**@768px*/}
+            <td className="price-stat-td"><span className="item-st ">₱ {item.itemPrice}</span></td>
+            <td><span className="item-st">{item.itemQty}</span></td>
+            <td className="price-stat-td"><span className="item-st">₱ {parseInt(item.itemPrice) * parseInt(item.itemQty)}</span></td>
             <td>
                 <form>
                     <button className="delete-btn" onClick={(e) =>{e.preventDefault(); removeItemCart(item._id); removeItem(item._id)} } type="submit"><FaTrash/></button>
@@ -107,7 +116,62 @@ export default function Cart() {
     
 
     return (
-        <div>   
+
+        <>
+        <Header cartcount={count}/>
+        <Container>
+            
+            <Row >
+                <Col lg={8} xs={12} >
+                    <h1 className="sec-title">Shopping Cart</h1>
+                    <Table borderless responsive >
+                        <tr className="tr">
+                            <th className="item-muted" align="left">Product</th>
+                            {/**@768px*/}
+                            <th className="item-muted price-stat-th" align="left">Price</th>
+                            <th className="item-muted" align="left">Qty.</th>
+                            <th className="item-muted price-stat-th"   align="left">Total</th>
+                            <th className="item-muted" align="left"></th>
+                        </tr>
+                        {populateCart}
+                    </Table>
+                </Col>
+                <Col lg={4} xs={12}>
+                    <h1 className="sec-title ">Summary</h1>
+                    <div className="d-flex justify-content-between mb-2">
+                        <span className="item-muted">Subtotal</span><span className="item-muted">₱ {subTotal}.00</span>
+                    </div>
+                    
+                    <div className="d-flex justify-content-between mb-4">
+                        <span className="item-muted">Delivery Fee</span><span className="item-muted ">₱ {devFee}.00</span>
+                    </div>
+                    <div className="d-flex justify-content-between mb-4">
+                        <span className="item-ft">Grand Total</span><span className="item-ft">₱ {grandTotal }.00</span>
+                    </div>
+                    <div className="d-flex justify-content-between mb-2">
+                        <button className="checkout-btn">Check Out</button>
+                    </div>
+                  {/** <div className="check-group col w-100 d-flex-row justify-end align-items-center">
+                        <div className="d-flex-col">
+                            <span className="gt">Grand Total</span>
+                            <span className="item-price"> ₱ {grandTotal}.00</span>
+                        </div>
+                                
+                        <button className="checkout-btn">Check Out</button>
+                    </div>*/} 
+               
+                </Col>
+                    
+    
+                
+            </Row>
+
+                
+
+        </Container>
+        
+        </>
+        /**<div>   
             <Header cartcount={count}/>
                    
             <div className="container justify-center cart-area">
@@ -140,6 +204,6 @@ export default function Cart() {
                 
             </div>
             
-        </div>
+        </div>*/
     )
 }

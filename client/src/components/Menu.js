@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom';
 import { FaHotjar} from 'react-icons/fa';
 import axios from 'axios'
+import {Container, Row, Col} from 'react-bootstrap'
 export default function Menu(props) {
     const [prods, setProds] = useState([])
     
@@ -31,7 +32,7 @@ export default function Menu(props) {
         }
       }}
       >
-          <div className="card">
+          <div className="la-card">
               <div className="w-100 justify-center">
                 <img className="img-fluid" src={require(`../assets/images/items/${item.thumb}`).default}/>
               </div>
@@ -44,8 +45,11 @@ export default function Menu(props) {
     );
     
     return (
-        
-        <div className="container d-flex-col align-items-center">
+      <>
+     
+
+       
+      <div className="container d-flex-col align-items-center">
           <div className="pd-0 container justify-center ">
             <div className="row">
             <h1 className="sec-title mt-4">All Bugritos</h1>
@@ -60,5 +64,6 @@ export default function Menu(props) {
             </div>
        
         </div>
+         </>
     )
 }
