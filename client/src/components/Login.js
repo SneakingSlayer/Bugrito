@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './components.css';
 import {useHistory} from 'react-router-dom'
+import {Container, Row, Col, Form, Button} from 'react-bootstrap'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
@@ -44,7 +45,34 @@ export default function Login() {
      
 
     return (
-        <div className="container justify-center ">
+        <>
+        <Container>
+            <Row>
+                <Col className="d-flex justify-center" xs={12} lg={12}> 
+                    <Form onSubmit={validation}>
+                        {err? <p className="description">Invalid username/password</p>: null}
+                        <div className="input-group">
+                            <input type="email" className="effect-16" placeholder="Email" required onChange={event => setEmail(event.target.value)}></input> 
+                        </div>
+                        <div className="input-group">
+                            <input placeholder="Password" type="password" required onChange={event => setPass(event.target.value)}></input> 
+                        </div>
+                        <div className="input-group justify-center text">
+                            <button className="btn-action" type="submit">Sign In</button>
+                        </div>
+                        
+                        <span className="description">Don't have an account? 
+                            <Link className="reg-link" to="/Register">
+                                <span >&nbsp; Sign up here</span>
+                            </Link>
+                        </span>
+
+                    </Form>
+                
+                </Col>
+            </Row>
+        </Container>
+        {/**<div className="container justify-center ">
             
             <div className="row justify-center">
                 
@@ -69,7 +97,9 @@ export default function Login() {
                 
             </div>
             
-        </div>
+        </div>*/}
+        </>
+        
     )
 }
 

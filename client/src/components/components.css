@@ -331,6 +331,7 @@ body{
     font-family: 'Barlow-Bold'; 
     margin-top: 1rem;
     margin-bottom:3rem;
+    padding-left: 15px;
      
 }
 
@@ -478,6 +479,7 @@ body{
    .hero-desc{
        max-width: 100%;
    }
+   
 }
 
 @media screen and (min-width: 768px){
@@ -487,6 +489,9 @@ body{
 }
 
 @media screen and (max-width: 768px){
+    .nav-link{
+        padding: 0 !important;
+    }
     .cart-img{
         max-width: 60px;
     }
@@ -517,8 +522,8 @@ body{
         margin-bottom: 1.5rem;
     }
     .row{
-        padding-left: 35px;
-        padding-right: 35px;
+      
+   
     }
     .card-row{
        padding-left: 35px;
@@ -526,5 +531,8 @@ body{
         grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
 
     
+    }
+    .create-title{
+       
     }
 }
