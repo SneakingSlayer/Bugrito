@@ -11,7 +11,7 @@ export default function ProductCard(props) {
 
     useEffect(() => {
 
-      const getProduct = axios.get('http://localhost:5000/api/user/allProducts')
+      const getProduct = axios.get('/api/user/allProducts')
       .then((res) => {
         setProds(res.data)
 

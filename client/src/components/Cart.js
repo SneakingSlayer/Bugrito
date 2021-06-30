@@ -85,7 +85,7 @@ export default function Cart() {
 
 
         console.log(itemInfo)
-        axios.post('http://localhost:5000/api/user/removeItem', itemInfo, {
+        axios.post('/api/user/removeItem', itemInfo, {
             headers: header
         })
         .then((res) => {
@@ -99,7 +99,7 @@ export default function Cart() {
    
     useEffect(() => {
         
-        const req = axios.get('http://localhost:5000/api/user/cartItems', {
+        const req = axios.get('/api/user/cartItems', {
             headers: header
         })
         .then((res) => {

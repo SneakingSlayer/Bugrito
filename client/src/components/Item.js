@@ -46,7 +46,7 @@ export default function Item(props) {
        
 
         try{
-            await axios.post('http://localhost:5000/api/user/cart', addItem, {
+            await axios.post('/api/user/cart', addItem, {
                 headers: header
             });
             fetchCount();
@@ -59,7 +59,7 @@ export default function Item(props) {
     }
 
     function fetchCount(){
-        const req = axios.get('http://localhost:5000/api/user/cartItems', {
+        const req = axios.get('/api/user/cartItems', {
             headers: header
         })
         .then((res) => {

@@ -17,7 +17,7 @@ const queryString = {
 }
 useEffect(() => {
     //console.log(id)
-axios.post('http://localhost:5000/api/user/getProduct', queryString)
+axios.post('/api/user/getProduct', queryString)
 .then(res=>{
    // console.log(res.data)
     const data = res.data
