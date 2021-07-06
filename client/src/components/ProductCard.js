@@ -1,24 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom';
-import { FaHotjar} from 'react-icons/fa';
-import axios from 'axios'
 import {Card, Container, Row, Col, CardDeck} from 'react-bootstrap'
+import { getItems } from '../redux/actions/itemActions';
+import {useSelector, useDispatch} from 'react-redux'
+
 export default function ProductCard(props) {
-     const [prods, setProds] = useState([])
-    
-
-     
-
+    const items = useSelector(state => state.item) 
+    const dispatch = useDispatch()
+    const prods = items.items
     useEffect(() => {
-
-      const getProduct = axios.get('/api/user/allProducts')
-      .then((res) => {
-        setProds(res.data)
-
-      })
-      .catch((err) =>{
-        console.log(err)
-      })
+      dispatch(getItems())
       
     }, [])
     const populateItems = prods.filter(prod => prod.role==="featured").map((item) => 
@@ -54,10 +45,7 @@ export default function ProductCard(props) {
             <div className="row">
             <h1 className="sec-title mt-4">Featured Bugritos</h1>
             </div>
-            
           </div>
-            
-
             <div className="card-row">
                 {populateItems}
             </div>

@@ -11,24 +11,45 @@ import Item from './components/Item';
 
 import ItemPage from './pages/ItemPage'
 import MenuPage from './pages/MenuPage'
+import { setUser } from './redux/actions/authActions';
+import {useSelector, useDispatch} from 'react-redux'
+import { PrivateRoute } from './privateroutes/PrivateRoutes';
 
+import store from './redux/store'
 function App() {
   
-  return (
-   
+
+  const dispatch = useDispatch()
+  const jwt = localStorage.getItem('jwt')
+  const name = localStorage.getItem('name')
+  const auth = useSelector(state => state.auth)
+  const CartLink ='/Cart'
+  
+
+  useEffect(() => {
+    if(jwt != null){
+      dispatch(setUser(jwt,name))
+    }
     
-    <Router>
-      <Switch>
-        <div>
-        <Route component={MenuPage} path ="/Menu" />
-        <Route component={CartPage} path="/Cart"/>
-        <Route component={RegisterPage} path="/Register"/>
-        <Route component={LoginPage} path="/Login"/>
-        <Route component={ItemPage}  path="/Item/:prodno"/>
-        <Route component={Home} path="/" exact={true}/>
-        </div>
-      </Switch>
-    </Router>
+  }, [])
+
+  return (
+      
+    
+      <Router>
+        <Switch>
+
+          <div>
+          <Route component={MenuPage} path ="/Menu" />
+          <PrivateRoute component={CartPage} path={CartLink} auth={auth.isAuthenticated}/>
+          <Route component={RegisterPage} path="/Register"/>
+          <Route component={LoginPage} path="/Login"/>
+          <Route component={ItemPage}  path="/Item/:prodno"/>
+          <Route component={Home} path="/" exact={true}/>
+          </div>
+        </Switch>
+      </Router>
+
   );
 }
 

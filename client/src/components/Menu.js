@@ -3,21 +3,17 @@ import {Link} from 'react-router-dom';
 import { FaHotjar} from 'react-icons/fa';
 import axios from 'axios'
 import {Container, Row, Col} from 'react-bootstrap'
+import { getItems } from '../redux/actions/itemActions';
+import {useSelector, useDispatch} from 'react-redux'
 export default function Menu(props) {
-    const [prods, setProds] = useState([])
+    const dispatch = useDispatch()
+    const items = useSelector(state => state.item) 
+    const prods = items.items
     
     useEffect(() => {
-
-      const getProduct = axios.get('/api/user/allProducts')
-      .then((res) => {
-        setProds(res.data)
-
-      })
-      .catch((err) =>{
-        console.log(err)
-      })
-      
+      dispatch(getItems())
     }, [])
+
     const populateItems = prods.map((item) => 
       <Link className="link"
       to={{
@@ -46,18 +42,12 @@ export default function Menu(props) {
     
     return (
       <>
-     
-
-       
       <div className="container d-flex-col align-items-center">
           <div className="pd-0 container justify-center ">
             <div className="row">
             <h1 className="sec-title mt-4">All Bugritos</h1>
             </div>
-            
           </div>
-            
-
             <div className="card-row">
               
                 {populateItems}

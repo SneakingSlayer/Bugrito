@@ -45,16 +45,20 @@ router.post('/login', async (req, res) => {
    res.header('auth-token', token).send({
        token: token,
        id: checkEmail._id,
-       fName: checkEmail.firstName
+       name: checkEmail.firstName
    });
    
 });
 
 //Add To Cart
 router.post('/cart', verifyToken, async (req, res) => {
-    
+
+    const token = req.headers['auth-token'];
+    const decoded = jwt.verify(token, process.env.TOKEN_SECRET)
+    const userId = decoded._id
+
     const cart = new Cart({
-        userID: req.body.userID,
+        userID: userId,
         itemName: req.body.itemName,
         itemQty: req.body.itemQty,
         itemPrice: req.body.itemPrice,
@@ -64,7 +68,7 @@ router.post('/cart', verifyToken, async (req, res) => {
     });
 
     const filter = {
-        userID: req.body.userID,
+        userID: userId,
         prodno: req.body.prodno
     }
 
@@ -94,13 +98,6 @@ router.post('/cart', verifyToken, async (req, res) => {
             res.status(400).send(err);
         }
     }
-    
-    /**try{
-        const savedCart = await cart.save();
-        res.send(savedCart);
-    }catch(err){
-        res.status(400).send(err);
-    }*/
 });
 
 
@@ -117,7 +114,7 @@ router.post('/removeItem', verifyToken, async (req, res, next) =>{
     const deleteItem = await Cart.deleteOne(item);
     if(deleteItem.deletedCount === 1 ){
        // res.status(200).send('Deleted Successfully!')
-      res.status(200).send("Ok")
+      res.status(200).send(deleteItem)
 
     }
     else{
@@ -153,19 +150,17 @@ router.get('/allProducts', async (req, res, next) => {
 })
 
 //Get specific product 
-router.post('/getProduct', async (req, res, next) => {
-    const getProduct = await Product.findOne({prodno: req.body.prodno})
+router.get('/getProduct/:id', async (req, res, next) => {
+
+
+   const getProduct = await Product.findOne({prodno: req.params['id']})
     if(getProduct){
         res.status(200).send(getProduct)
     }
     else{
         res.status(404).send("Not Found")
     }
-   
 })
-
-
-
 
 
 

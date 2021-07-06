@@ -6,9 +6,8 @@ export default function MenuPage() {
     return (
         <div>
             <Header/>
-            <Menu/>
+                <Menu/>
             <Footer/>
-            
         </div>
     )
 }

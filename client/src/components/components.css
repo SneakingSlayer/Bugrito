@@ -22,7 +22,7 @@ body{
     width: 100%;
     max-width: 1440px;
     display: flex;
-    padding: 3rem 0 3rem 0;
+    padding: 3rem 0 0 0;
 }
 
 .row {
@@ -202,6 +202,7 @@ body{
 
 .input-group{
     margin: 1rem;
+    margin-left: 0 !important;
     display: flex;
     justify-content: center;
     
@@ -269,7 +270,9 @@ body{
     padding-top: 0 !important;
 }
 
-
+form{
+    width: 30%;
+}
 
 
 .table td, .table th {
@@ -331,7 +334,7 @@ body{
     font-family: 'Barlow-Bold'; 
     margin-top: 1rem;
     margin-bottom:3rem;
-    padding-left: 15px;
+
      
 }
 
@@ -467,6 +470,9 @@ body{
 }
 .ldio-fjjt8eyoem div { box-sizing: content-box; }
 
+.item-info-card{
+    padding: 20px;
+}
 
 
 @media screen and (max-width: 1000px) {
@@ -478,6 +484,13 @@ body{
    }
    .hero-desc{
        max-width: 100%;
+    
+   }
+   .navbar-toggler{
+       text-align: center;
+       font-size: 16px;
+       height: 50px;
+       width: 50px;
    }
    
 }
@@ -489,6 +502,13 @@ body{
 }
 
 @media screen and (max-width: 768px){
+    .container{
+        padding-left: 10px;
+    }
+    form{
+        width: 80%;
+    }
+    
     .nav-link{
         padding: 0 !important;
     }
@@ -532,7 +552,7 @@ body{
 
     
     }
-    .create-title{
-       
+    .nav-link{
+        margin-right: .5rem;
     }
 }
