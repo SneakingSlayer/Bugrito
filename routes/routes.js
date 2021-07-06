@@ -4,7 +4,8 @@ const Cart = require('../models/Cart')
 const Product = require('../models/Products')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { isValidObjectId } = require("mongoose");
+
+
 
 
 ///Register User
@@ -182,7 +183,7 @@ function verifyToken(req, res, next){
         })
     }
     else{
-        res.sendStatus(403)
+        res.sendStatus(403).send(err.message)
     }
 }
 
