@@ -61,7 +61,7 @@ export default function Item(props) {
                         <button className="description btn-qty" onClick={subQty}><FaMinus/></button>
                         <input className="description qty-inp text-center" value={count} min="1" />
                         <button className="description btn-qty" onClick={() => setCount(count+1)}><FaPlus/></button>
-                        <form onSubmit={addClicked}>
+                        <form className="add-to-cart-btn" onSubmit={addClicked}>
                             <button className="btn add-btn" type="submit">Add to Cart</button>
                         </form>
                     </div>

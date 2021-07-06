@@ -397,7 +397,9 @@ form{
     width: 10%;
     border: none;
 }
-
+.add-to-cart-btn{
+    width: 100% !important;
+}
 .add-btn{
     font-family: 'Barlow-SemiBold';
     font-size: 18px;
