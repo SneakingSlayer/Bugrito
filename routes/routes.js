@@ -1,3 +1,4 @@
+const verifyToken = require('../middleware/auth')
 const router = require("express").Router();
 const User = require('../models/User')
 const Cart = require('../models/Cart')
@@ -167,7 +168,7 @@ router.get('/getProduct/:id', async (req, res, next) => {
 
 //Middleware
 
-function verifyToken(req, res, next){
+/**function verifyToken(req, res, next){
    const bearerHeader = req.headers['auth-token'];
     if(typeof bearerHeader !== 'undefined'){
         const bearer = bearerHeader;
@@ -185,7 +186,7 @@ function verifyToken(req, res, next){
     else{
         res.sendStatus(403).send(err.message)
     }
-}
+}*/
 
 
 module.exports = router;

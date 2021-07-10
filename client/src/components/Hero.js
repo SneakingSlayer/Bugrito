@@ -1,5 +1,6 @@
 import React from 'react';
 import BannerImg from '../assets/images/hero1.png';
+import {Link} from 'react-router-dom'
 import {Container, Row, Col} from 'react-bootstrap'
 export default function Hero() {
     return (
@@ -12,7 +13,7 @@ export default function Hero() {
                             Quisque quis fermentum massa.  
                         </p>
                         
-                        <button className="btn-hero price">Shop now</button>
+                        <Link to="/Menu" className="btn-hero price">Shop now</Link>
                     </div>
                            
                 </Col>

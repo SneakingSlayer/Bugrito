@@ -26,7 +26,7 @@ export default function Login() {
 
     return (
         <>
-        <Container>
+        <Container className="prod-card">
             <Row>
                 <Col className="d-flex justify-center" xs={12} lg={12}> 
                     <Form onSubmit={validation} className="text-center">

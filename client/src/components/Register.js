@@ -23,7 +23,7 @@ export default function Register() {
 
     return (
         <>
-        <Container>
+        <Container className="prod-card">
             <Row>
                 <Col className="d-flex justify-center" xs={12} lg={12}>
                     <Form className="text-center" onSubmit={registerUser}>

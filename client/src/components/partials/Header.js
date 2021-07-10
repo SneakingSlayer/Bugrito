@@ -1,11 +1,12 @@
 import React, { useEffect} from 'react'
 import {Navbar, Container, Dropdown, Nav} from 'react-bootstrap'
 import './partials.css'
-import { FaShoppingCart, FaUserCircle, FaSignOutAlt, FaAngleDown} from 'react-icons/fa';
+import { FaShoppingCart, FaUserCircle, FaSignOutAlt, FaAngleDown, FaHome, FaUtensils} from 'react-icons/fa';
 import {useHistory} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'; 
 import {getCartItems} from '../../redux/actions/cartActions'
 import { logOut } from '../../redux/actions/authActions';
+import logo from '../../assets/images/bugrito-logo.png'
 export default function Header(props) {
     const jwt = localStorage.getItem('jwt')
     const dispatch = useDispatch()
@@ -17,13 +18,13 @@ export default function Header(props) {
     const count = itemArr.length
     let state;
     
-    function badge(propsCount, rcount) {
-        if (jwt === null){
-            return
+    function badge() {
+
+        if(count < 1 || count === 0){
+            return null
         }
-        else{
-            return  <span className="badge">{updateCart()}</span>
-        }
+        return  <span className="badge">{updateCart()}</span>
+
     }
 
     if(auth.isAuthenticated){
@@ -58,7 +59,7 @@ export default function Header(props) {
     return (
         <Navbar collapseOnSelect expand="lg" >
         <Container className="nav-cont">
-        <Navbar.Brand className="navbrand"><a href='/'>Bugrito's</a></Navbar.Brand>
+        <Navbar.Brand className="navbrand"><a href='/'><img className="brand-img" src={logo}></img></a></Navbar.Brand>
         <div className="d-flex flex-row align-items-center">
             {
                 state? <Nav.Link href="/Cart" className="cart-icon-outside">{badge(props.cartcount, count)}<FaShoppingCart/> &nbsp;<span className="item-st">Cart</span></Nav.Link> : <Nav.Link href="/Login" className="login-show"><li className="list-item"><button className="btn-sign">Sign In</button></li></Nav.Link>
@@ -67,8 +68,8 @@ export default function Header(props) {
         </div>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className="item-st" href="/">Home</Nav.Link>
-            <Nav.Link className="item-st" href="/Menu">Menu</Nav.Link>
+            <Nav.Link className="item-st" href="/"><FaHome/> &nbsp;&nbsp;Home</Nav.Link>
+            <Nav.Link className="item-st" href="/Menu"><FaUtensils/> &nbsp;&nbsp;Menu</Nav.Link>
             
           </Nav>
           <Nav className="ml-auto">

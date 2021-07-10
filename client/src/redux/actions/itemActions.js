@@ -2,7 +2,7 @@ import { GET_ITEMS, GET_ONEITEM } from "./types";
 import axios from 'axios'
 
 export const getItems = () => async dispatch => {
-    await axios.get('/api/user/allProducts')
+    await axios.get('http://localhost:5000/api/user/allProducts')
     .then((res)=> dispatch({
         type: GET_ITEMS,
         payload: res.data
@@ -12,7 +12,7 @@ export const getItems = () => async dispatch => {
 }
 
 export const getOneItem = (id) => async dispatch => {
-    await axios.get(`/api/user/getProduct/${id}`)
+    await axios.get(`http://localhost:5000/api/user/getProduct/${id}`)
     .then((res) => dispatch({
         type: GET_ONEITEM,
         payload: res.data

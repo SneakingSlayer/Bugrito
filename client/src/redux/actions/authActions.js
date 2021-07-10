@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 export const login = (userInfo) => async dispatch => {
-    await axios.post('/api/user/login', userInfo)
+    await axios.post('http://localhost:5000/api/user/login', userInfo)
     .then(res => dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data

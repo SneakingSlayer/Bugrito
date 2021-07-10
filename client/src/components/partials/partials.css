@@ -26,6 +26,7 @@ body{
 }
 
 .navbar{
+    position: sticky;
     box-shadow: 2px 3px 17px -10px rgba(0,0,0,0.3);
 }
 .header-section{
@@ -280,6 +281,12 @@ body{
       background-color: transparent;
      
 
+  }
+
+  .brand-img{
+      width: 100%;
+      max-width: 80px;
+      height: auto;
   }
  
   .navbar-toggler{

@@ -8,7 +8,7 @@ const header = {
 }
 export const getCartItems = () => async dispatch => {
     
-   await axios.get('/api/user/cartItems', {
+   await axios.get('http://localhost:5000/api/user/cartItems', {
        headers: header
    })
     .then((res)=> dispatch({
@@ -22,7 +22,7 @@ export const getCartItems = () => async dispatch => {
 }
 
 export const addToCart = (item) => async dispatch => {
-    await axios.post('/api/user/cart', item, {
+    await axios.post('http://localhost:5000/api/user/cart', item, {
         headers: header
     })
     .then((res) => dispatch({
@@ -37,7 +37,7 @@ export const addToCart = (item) => async dispatch => {
 }
 
 export const deleteItem = (id) => async dispatch => {
-    await axios.post('/api/user/removeItem', id, {
+    await axios.post('http://localhost:5000/api/user/removeItem', id, {
         headers: header
     })
     .then((res) => dispatch({

@@ -48,7 +48,7 @@ export default function Item(props) {
     return (
         <>
          
-        <Container>
+        <Container className="prod-card">
             <Row>
                 <Col lg={8}>
                     <img className="item-img" src={require(`../assets/images/items/${props.thumb}`).default}></img>

@@ -42,7 +42,7 @@ export default function Menu(props) {
     
     return (
       <>
-      <div className="container d-flex-col align-items-center">
+      <div className="container d-flex-col align-items-center prod-card">
           <div className="pd-0 container justify-center ">
             <div className="row">
             <h1 className="sec-title mt-4">All Bugritos</h1>

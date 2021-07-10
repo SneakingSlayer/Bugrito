@@ -74,7 +74,7 @@ export default function Cart() {
 
     function loading(){
         return(
-            <div className="container justify-center align-items-center">
+            <div className="container justify-center align-items-center ">
                 <div className="loadingio-spinner-rolling-m0kkotwichc">
                     <div class="ldio-fjjt8eyoem">
                         <div>
@@ -89,7 +89,7 @@ export default function Cart() {
     
     return (
         <>
-        <Container>
+        <Container className="prod-card">
             <Row >
                 <Col lg={8} xs={12} >
                     <h1 className="sec-title">Shopping Cart</h1>
